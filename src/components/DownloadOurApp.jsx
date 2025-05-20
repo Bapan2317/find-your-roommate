@@ -13,7 +13,7 @@ const DownloadOurApp = () => {
                     Download Our Mobile App <br /> <span className='text-secondary'>20% Off</span>
                 </h1>
 
-                <div className="flex gap-4 pb-2">
+                <div className="flex gap-4">
 
                     <div className=" px-6 border rounded-4xl flex gap-2 items-center py-1 cursor-pointer">
                         <div className="">
