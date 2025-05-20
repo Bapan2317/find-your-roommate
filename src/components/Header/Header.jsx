@@ -20,7 +20,7 @@ const Header = () => {
                 {/* Navbar Links */}
                 <nav className="space-x-6 text-sm font-medium hidden md:flex">
                     <NavLink to="/" className="hover:text-secondary">Home</NavLink>
-                    <NavLink to="/find-roommate" className="hover:text-secondary">Find Roommate</NavLink>
+                    <NavLink to="/findRoommate" className="hover:text-secondary">Find Roommate</NavLink>
                     <NavLink to="/browse-listing" className="hover:text-secondary">Browse Listing</NavLink>
                     <NavLink to="/my-listing" className="hover:text-secondary">My Listing</NavLink>
                 </nav>

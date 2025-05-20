@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Banner from "../components/Banner";
 import DownloadOurApp from "../components/DownloadOurApp";
 import ErrorPage from "../Pages/ErrorPage";
+import FindRoommate from "../Pages/FindRoommate";
 
 export const router = createBrowserRouter(
     [
@@ -26,7 +27,12 @@ export const router = createBrowserRouter(
                     Component: DownloadOurApp
                 },
 
+
             ]
-        }
+        },
+        {
+            path: "findRoommate",
+            Component: FindRoommate
+        },
     ]
 )
