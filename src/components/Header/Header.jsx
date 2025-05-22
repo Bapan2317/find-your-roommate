@@ -1,11 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import logo from '../../assets/logo.png';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({ theme, setTheme }) => {
 
     const { user, LogOut, setUser } = use(AuthContext)
 
@@ -17,6 +17,10 @@ const Header = () => {
             })
             .catch(error => toast(error))
     }
+
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light");
+    };
 
     return (
         <div className='sticky top-0 z-50 bg-base-300 bg-opacity-95 backdrop-blur-sm shadow-md'>
@@ -42,6 +46,11 @@ const Header = () => {
 
                 {/* Auth Buttons */}
                 <div className="space-x-4 hidden md:flex">
+                    <div className="">
+                        <button onClick={toggleTheme} className="btn btn-sm btn-primary">
+                            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+                        </button>
+                    </div>
                     {
                         user ?
                             <div className="flex items-center gap-3">
