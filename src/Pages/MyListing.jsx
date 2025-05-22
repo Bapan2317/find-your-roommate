@@ -48,7 +48,6 @@ const MyListing = () => {
         });
     };
 
-    // Show loading screen while fetching
     if (loading || !user) {
         return (
             <div className="flex items-center justify-center h-screen">
@@ -58,12 +57,12 @@ const MyListing = () => {
     }
 
     return (
-        <div className='min-h-screen bg-gray-100 text-black p-6'>
-            <h2 className='text-2xl font-bold mb-6'>My Listings</h2>
+        <div className='min-h-screen bg-gray-100 text-black px-4 py-6'>
+            <h2 className='text-2xl font-bold mb-6 text-center md:text-left'>My Listings</h2>
 
             {currentUserPosts.length > 0 ? (
-                <div className="">
-                    <table className="table table-zebra w-10/12 mx-auto bg-white rounded-lg shadow">
+                <div className="overflow-x-auto">
+                    <table className="table w-full bg-white rounded-lg shadow">
                         <thead className="bg-primary text-white">
                             <tr>
                                 <th>#</th>
@@ -80,13 +79,13 @@ const MyListing = () => {
                                     <td>{post.title}</td>
                                     <td>{post.location}</td>
                                     <td>${post.rentAmount}</td>
-                                    <td>
+                                    <td className="flex flex-col md:flex-row gap-2">
                                         <Link
                                             to={`/UpdateRoommatePost/${post._id}`}
-                                            className="btn btn-sm btn-info mr-4"
-
+                                            className="btn btn-sm btn-info"
                                         >
-                                            Edit</Link>
+                                            Edit
+                                        </Link>
                                         <button
                                             onClick={() => handleDelete(post._id)}
                                             className="btn btn-sm btn-error"

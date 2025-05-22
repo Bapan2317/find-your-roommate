@@ -43,15 +43,15 @@ const Banner = () => {
 
             {/* Fixed Content Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black/40">
-                <h1 className="text-4xl md:text-5xl font-bold mb-8">
+                <h1 className="text-4xl text-center md:text-5xl font-bold mb-8">
                     Find to your best Roommate
                 </h1>
                 <div className="text-white text-xs">
-                    <div className="p-4 backdrop-blur-xs border border-b-0 bg-white/30 rounded-t-lg w-[150px] text-center mx-auto">
-                        <div className="text-xl font-semibold text-white">Roommate</div>
+                    <div className="p-2 md:p-4 backdrop-blur-xs border border-b-0 bg-white/30 rounded-t-lg w-[100px]  md:w-[150px] text-center mx-auto">
+                        <div className="md:text-xl font-semibold text-white text-xs">Roommate</div>
                     </div>
 
-                    <div className="p-4 backdrop-blur-sm border bg-white/30 w-[800px] items-center flex justify-around rounded-2xl ">
+                    <div className="p-4 backdrop-blur-sm border bg-white/30 md:w-[700px] lg:w-[1000px] items-center flex justify-between rounded-2xl ">
                         <div className="text-white ">
                             <label className="block mb-1">Keyword</label>
                             <input
@@ -67,7 +67,7 @@ const Banner = () => {
                                 <option value="">Single</option>
                             </select>
                         </div>
-                        <div className="text-white">
+                        <div className="text-white hidden md:block">
                             <label className="block mb-1">Lifestyle</label>
                             <select className="font-bold *:text-black">
                                 <option disabled value="">Pets</option>
@@ -76,7 +76,7 @@ const Banner = () => {
                             </select>
                         </div>
                         <div className="">
-                            <button className="btn btn-primary">Search</button>
+                            <button className="py-2 px-4 bg-primary rounded ml-12 md:ml-0 font-bold md:btn md:btn-primary">Search</button>
                         </div>
                     </div>
                 </div>
