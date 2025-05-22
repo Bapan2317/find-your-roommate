@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use } from 'react';
 import logo from '../../assets/logo.png';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
@@ -41,7 +41,7 @@ const Header = ({ theme, setTheme }) => {
                     <NavLink to="/" className="hover:text-secondary">Home</NavLink>
                     <NavLink to="/findRoommate" className="hover:text-secondary">Find Roommate</NavLink>
                     <NavLink to="/browseListing" className="hover:text-secondary">Browse Listing</NavLink>
-                    <NavLink to="/my-listing" className="hover:text-secondary">My Listing</NavLink>
+                    <NavLink to="/myListing" className="hover:text-secondary">My Listing</NavLink>
                 </nav>
 
                 {/* Auth Buttons */}

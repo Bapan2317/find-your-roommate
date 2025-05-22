@@ -12,7 +12,7 @@ const Home = () => {
         <div>
             <Banner />
             <div className="bg-base-300">
-                <div className="w-10/12 mx-auto grid grid-cols-3 gap-12">
+                <div className="w-10/12 mx-auto grid grid-cols-3 gap-12 py-12">
                     {
                         roommates.map(roommate => <RoommatesPost
                             key={roommate._id}

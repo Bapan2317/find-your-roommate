@@ -44,7 +44,7 @@ const Banner = () => {
             {/* Fixed Content Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black/40">
                 <h1 className="text-4xl md:text-5xl font-bold mb-8">
-                    Fiend to your best Roommate
+                    Find to your best Roommate
                 </h1>
                 <div className="text-white text-xs">
                     <div className="p-4 backdrop-blur-xs border border-b-0 bg-white/30 rounded-t-lg w-[150px] text-center mx-auto">
@@ -57,7 +57,7 @@ const Banner = () => {
                             <input
                                 type="text"
                                 placeholder="Looking for?"
-                                className="w-full p-3 rounded-lg bg-transparent text-white placeholder-white placeholder:font-bold border-none focus:outline-none focus:ring-0"
+                                className="w-full rounded-lg bg-transparent text-white placeholder-white placeholder:font-bold border-none focus:outline-none focus:ring-0"
                             />
                         </div>
                         <div className="text-white">

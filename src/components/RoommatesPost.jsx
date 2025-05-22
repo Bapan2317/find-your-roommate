@@ -8,7 +8,7 @@ const RoommatesPost = ({ roommate }) => {
     const { title, description, availability, location, _id } = roommate
 
     return (
-        <div className='bg-gray-700 py-6 px-12 rounded-2xl my-12 transition-transform hover:scale-105 hover:shadow-xl'>
+        <div className='bg-gray-700 py-6 px-12 rounded-2xl  transition-transform hover:scale-105 hover:shadow-xl'>
             <ul className="card list-disc ">
                 <li>
                     <h1 className='font-bold text-primary'>{title}</h1>

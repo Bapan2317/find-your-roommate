@@ -12,6 +12,8 @@ import AuthProvider from "../provider/AuthProvider";
 import signIn from "../Pages/signIn";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../Pages/Register";
+import MyListing from "../Pages/MyListing";
+import UpdateRoommatePost from "../components/UpdateRoommatePost";
 
 
 export const router = createBrowserRouter(
@@ -49,6 +51,16 @@ export const router = createBrowserRouter(
                     path: "browseListing",
                     loader: () => fetch("http://localhost:3000/allRoommates"),
                     Component: BrowseListing
+                },
+                {
+                    path: "myListing",
+                    loader: () => fetch("http://localhost:3000/allRoommates"),
+                    Component: MyListing
+                },
+                {
+                    path: "UpdateRoommatePost/:id",
+                    loader: ({ params }) => fetch(`http://localhost:3000/allRoommates/${params.id}`),
+                    Component: UpdateRoommatePost
                 },
 
             ]
