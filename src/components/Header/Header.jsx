@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { use } from 'react';
 import logo from '../../assets/logo.png';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-toastify';
+import { FaRegUserCircle } from 'react-icons/fa';
 
 const Header = () => {
+
+    const { user, LogOut, setUser } = use(AuthContext)
+
+    const handleLogOut = () => {
+        LogOut()
+            .then(() => {
+                toast("Log out successfully")
+                setUser(null)
+            })
+            .catch(error => toast(error))
+    }
+
     return (
         <div className='sticky top-0 z-50 bg-base-300 bg-opacity-95 backdrop-blur-sm shadow-md'>
             <div className='max-w-7xl mx-auto flex justify-between items-center p-4'>
@@ -21,18 +36,33 @@ const Header = () => {
                 <nav className="space-x-6 text-sm font-medium hidden md:flex">
                     <NavLink to="/" className="hover:text-secondary">Home</NavLink>
                     <NavLink to="/findRoommate" className="hover:text-secondary">Find Roommate</NavLink>
-                    <NavLink to="/browse-listing" className="hover:text-secondary">Browse Listing</NavLink>
+                    <NavLink to="/browseListing" className="hover:text-secondary">Browse Listing</NavLink>
                     <NavLink to="/my-listing" className="hover:text-secondary">My Listing</NavLink>
                 </nav>
 
                 {/* Auth Buttons */}
                 <div className="space-x-4 hidden md:flex">
-                    <button className='text-secondary py-1.5 px-6 text-sm rounded-2xl border border-secondary hover:bg-secondary hover:text-white transition'>
-                        Sign In
-                    </button>
-                    <button className='text-secondary py-1.5 px-6 text-sm rounded-2xl border border-secondary hover:bg-secondary hover:text-white transition'>
-                        Signup
-                    </button>
+                    {
+                        user ?
+                            <div className="flex items-center gap-3">
+                                <div className="">
+                                    {
+                                        <img className='w-[30px] h-[30px] rounded-full' src={user.photoURL ? user.photoURL : <FaRegUserCircle />} title={user.displayName} />
+
+                                    }
+                                </div>
+                                <button onClick={handleLogOut} className='text-secondary py-1.5 px-6 text-sm rounded-2xl border border-secondary hover:bg-secondary hover:text-white transition'>LogOut</button>
+                            </div>
+                            :
+                            <div>
+                                <Link to={"/auth/signIn"} className='text-secondary py-1.5 px-6 text-sm rounded-2xl border border-secondary hover:bg-secondary hover:text-white transition'>
+                                    Sign In
+                                </Link>
+                                <Link to={"/auth/register"} className='text-secondary py-1.5 px-6 text-sm rounded-2xl border border-secondary hover:bg-secondary hover:text-white transition'>
+                                    Signup
+                                </Link>
+                            </div>
+                    }
                 </div>
             </div>
         </div>
