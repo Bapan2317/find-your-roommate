@@ -9,14 +9,14 @@ import { useLoaderData } from 'react-router';
 const RoommateDetails = () => {
     const roommateDetails = useLoaderData()
     console.log(roommateDetails);
-    const { title, description, Availability, location, roomType, lifestyle, contactInfo, rentAmount, userEmail, userName } = roommateDetails;
+    const { title, description, availability, location, roomType, lifestyle, contactInfo, rentAmount, userEmail, userName } = roommateDetails;
     // console.log(userEmail);
     return (
         <div className="min-h-screen bg-gray-200 flex justify-center items-center ">
             <div className="text-black bg-white  w-2xl p-12 rounded-2xl">
                 <div className="flex justify-between items-center">
                     <h1 className="text-3xl text-center font-bold text-primary">{title}</h1>
-                    <p className='bg-green-200 py-1 px-3 rounded-2xl'>{Availability}</p>
+                    <p className='bg-green-200 py-1 px-3 rounded-2xl'>{availability}</p>
                 </div>
                 <hr className='my-8 border-gray-300' />
 

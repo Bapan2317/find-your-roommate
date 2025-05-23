@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
-    const { login, setUser, signInGoogle } = use(AuthContext)
+    const { login, setUser, signInGoogle, setLoading } = use(AuthContext)
 
     const navigate = useNavigate()
 
@@ -19,6 +19,8 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+
+        setLoading(true)
 
         login(email, password)
             .then(result => {
@@ -35,14 +37,18 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInGoogle()
-            .then(result => {
+            .then((result) => {
                 setUser(result.user)
-                navigate("/")
+                toast("Login successful")
+                setTimeout(() => {
+                    navigate("/");
+                }, 100);
+
             })
             .catch(error => {
-                toast(error.message)
-            })
-    }
+                toast(error.message);
+            });
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500">
@@ -57,7 +63,7 @@ const Login = () => {
                             type="email"
                             name="email"
                             // placeholder="Enter your email"
-                            defaultValue={"bap@an.com"}
+                            defaultValue={"bapan@2311.com"}
                             className="w-full p-3 rounded-lg bg-white/30 placeholder-white/70 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white"
                         />
                     </div>

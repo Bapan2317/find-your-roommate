@@ -26,11 +26,11 @@ const Register = () => {
         register(email, password)
             .then(result => {
                 const user = result.user
-
+                navigate("/")
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
                         setUser({ ...user, displayName: name, photoURL: photo })
-                        navigate("/")
+
                     })
                     .catch(error => {
                         toast(error.message);
@@ -45,7 +45,6 @@ const Register = () => {
     const handleGoogleSignIn = () => {
         signInGoogle()
             .then(result => {
-                console.log(result);
                 setUser(result.user)
                 navigate("/");
             })

@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react';
 import logo from '../../assets/logo.png';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import { FaRegUserCircle } from 'react-icons/fa';
@@ -13,13 +13,14 @@ const Header = ({ theme, setTheme }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-
+    const navigate = useNavigate()
 
     const handleLogOut = () => {
         LogOut()
             .then(() => {
                 toast("Log out successfully")
                 setUser(null)
+                navigate("/")
             })
             .catch(error => toast(error))
     }

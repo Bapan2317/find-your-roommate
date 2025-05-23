@@ -13,7 +13,9 @@ const MainLayout = () => {
 
 
             <Header theme={theme} setTheme={setTheme} className='max-w-7xl mx-auto' />
-            <Outlet />
+            <div className="min-h-screen">
+                <Outlet />
+            </div>
             <Footer />
 
         </div>

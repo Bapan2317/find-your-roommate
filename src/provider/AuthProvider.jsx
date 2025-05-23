@@ -18,12 +18,10 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUser = (updateData) => {
-        setLoading(true)
         return updateProfile(auth.currentUser, updateData)
     }
 
     const signInGoogle = () => {
-        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
@@ -34,7 +32,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const LogOut = () => {
-        setLoading(true)
         return signOut(auth)
     }
 
@@ -44,21 +41,20 @@ const AuthProvider = ({ children }) => {
             console.log(currentUser);
             setLoading(false)
         })
-        return () => {
-            unsubscribe()
-        }
+        return () => unsubscribe()
     }, [])
 
     const userInfo = {
         user,
         setUser,
+        loading,
+        setLoading,
         register,
         updateUser,
         signInGoogle,
         login,
         LogOut,
-        loading,
-        setLoading
+
     }
 
 

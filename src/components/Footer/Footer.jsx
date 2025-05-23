@@ -10,7 +10,7 @@ import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 const Footer = () => {
     return (
-        <div className="bg-base-300">
+        <div className="bg-base-300 text-white">
             <div className=" max-w-10/12 mx-auto py-12 border-b">
                 <div className='bg-primary hidden md:flex justify-between p-8 rounded-2xl '>
                     <div className="flex gap-4 items-center ">

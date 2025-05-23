@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react';
+import React, { use } from 'react';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Swal from 'sweetalert2';
@@ -9,14 +9,6 @@ const FindRoommate = () => {
     const { user, setLoading } = use(AuthContext)
     const { email, displayName } = user || {}
 
-    useEffect(() => {
-        setLoading(true);
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1500); // 1.5s এর মতো delay
-
-        return () => clearTimeout(timer);
-    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -54,9 +46,9 @@ const FindRoommate = () => {
     }
 
     return (
-        <div className='bg-green-200 '>
-            <Header />
-            <form onSubmit={handleSubmit} className="w-10/12 mx-auto  my-8 text-white">
+        <div className='bg-green-200 min-h-screen'>
+
+            <form onSubmit={handleSubmit} className="w-10/12 mx-auto  py-8 text-white">
                 <div className="grid grid-cols-1 md:grid-cols-2 text-black">
                     <fieldset className="fieldset w-10/12 mx-auto">
                         <legend className="fieldset-legend">Title</legend>
@@ -125,7 +117,7 @@ const FindRoommate = () => {
                 <button className='btn btn-primary  block mt-4 w-2/12 ml-10'>Post</button>
             </form>
 
-            <Footer />
+
         </div>
     );
 };

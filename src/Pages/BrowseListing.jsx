@@ -11,7 +11,7 @@ const BrowseListing = () => {
 
     return (
 
-        <div className="bg-gray-300 min-h-screen ">
+        <div className="bg-gray-300 min-h-screen text-white">
             <div className='w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-12 py-12'>
                 {allRoommates.map(singleRoommate => <BrowseListingDetails singleRoommate={singleRoommate}></BrowseListingDetails>)}
             </div>

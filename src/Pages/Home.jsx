@@ -7,7 +7,8 @@ import { useLoaderData } from 'react-router';
 
 const Home = () => {
     const roommates = useLoaderData()
-    // console.log(roommates);
+    console.log(roommates);
+
     return (
         <div>
             <Banner />
@@ -22,7 +23,8 @@ const Home = () => {
                             roommate={roommate}
                         >
                         </RoommatesPost>)
-                    }</div>
+                    }
+                </div>
             </div>
             <DownloadOurApp />
             {/* <TeamCarousel /> */}

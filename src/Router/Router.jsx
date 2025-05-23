@@ -14,6 +14,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../Pages/Register";
 import MyListing from "../Pages/MyListing";
 import UpdateRoommatePost from "../components/UpdateRoommatePost";
+import PrivateRoute from "../provider/PrivateRoute";
+// import PrivateRoute from "../provider/PrivateRoute";
 
 
 export const router = createBrowserRouter(
@@ -26,7 +28,7 @@ export const router = createBrowserRouter(
                 {
                     index: true,
                     path: "/",
-                    loader: () => fetch("http://localhost:3000/roommates"),
+                    loader: () => fetch("http://localhost:3000/filterRoommates"),
                     Component: Home
                 },
                 {
@@ -50,40 +52,37 @@ export const router = createBrowserRouter(
                 {
                     path: "browseListing",
                     loader: () => fetch("http://localhost:3000/allRoommates"),
-                    Component: BrowseListing
+                    // Component: BrowseListing
+                    element: <BrowseListing />
                 },
                 {
                     path: "myListing",
                     loader: () => fetch("http://localhost:3000/allRoommates"),
-                    Component: MyListing
+                    element: <PrivateRoute> <MyListing /> </PrivateRoute>
                 },
                 {
                     path: "UpdateRoommatePost/:id",
                     loader: ({ params }) => fetch(`http://localhost:3000/allRoommates/${params.id}`),
                     Component: UpdateRoommatePost
                 },
-
+                {
+                    path: "/findRoommate",
+                    element: <PrivateRoute> <FindRoommate /> </PrivateRoute>
+                },
             ]
         },
-        {
-            path: "findRoommate",
-            Component: FindRoommate
-        },
+
         {
             path: "/auth",
             Component: AuthLayout,
             children: [
                 {
-
                     path: "/auth/signIn",
                     Component: signIn
-
                 },
                 {
-
                     path: "/auth/register",
                     Component: Register
-
                 },
             ]
         },
