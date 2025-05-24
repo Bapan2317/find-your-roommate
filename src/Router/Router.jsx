@@ -15,6 +15,8 @@ import Register from "../Pages/Register";
 import MyListing from "../Pages/MyListing";
 import UpdateRoommatePost from "../components/UpdateRoommatePost";
 import PrivateRoute from "../provider/PrivateRoute";
+import { Suspense } from "react";
+import Loader from "../components/Loader";
 // import PrivateRoute from "../provider/PrivateRoute";
 
 
@@ -22,14 +24,20 @@ export const router = createBrowserRouter(
     [
         {
             path: "/",
-            Component: MainLayout,
+            // Component: MainLayout,
+            element: (
+                <Suspense fallback={<Loader />}><MainLayout /></Suspense>
+            ),
             errorElement: <ErrorPage></ErrorPage>,
             children: [
                 {
                     index: true,
                     path: "/",
-                    loader: () => fetch("http://localhost:3000/filterRoommates"),
-                    Component: Home
+                    loader: () => fetch("https://roommate-server-side-nu.vercel.app/filterRoommates"),
+                    // Component: Home
+                    element: (
+                        <Suspense fallback={<Loader />}> <Home /> </Suspense>
+                    )
                 },
                 {
                     path: "banner",
@@ -41,29 +49,29 @@ export const router = createBrowserRouter(
                 },
                 {
                     path: "roommatePost",
-
                     Component: RoommatesPost
                 },
                 {
                     path: "roommate/:id",
-                    loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
-                    Component: RoommateDetails
+                    loader: ({ params }) => fetch(`https://roommate-server-side-nu.vercel.app/roommates/${params.id}`),
+                    // Component: RoommateDetails
+                    element: <PrivateRoute> <RoommateDetails /></PrivateRoute>
                 },
                 {
                     path: "browseListing",
-                    loader: () => fetch("http://localhost:3000/allRoommates"),
+                    loader: () => fetch("https://roommate-server-side-nu.vercel.app/allRoommates"),
                     // Component: BrowseListing
                     element: <BrowseListing />
                 },
                 {
                     path: "myListing",
-                    loader: () => fetch("http://localhost:3000/allRoommates"),
+                    loader: () => fetch("https://roommate-server-side-nu.vercel.app/allRoommates"),
                     element: <PrivateRoute> <MyListing /> </PrivateRoute>
                 },
                 {
                     path: "UpdateRoommatePost/:id",
-                    loader: ({ params }) => fetch(`http://localhost:3000/allRoommates/${params.id}`),
-                    Component: UpdateRoommatePost
+                    loader: ({ params }) => fetch(`https://roommate-server-side-nu.vercel.app/allRoommates/${params.id}`),
+                    element: <PrivateRoute> <UpdateRoommatePost /></PrivateRoute>
                 },
                 {
                     path: "/findRoommate",

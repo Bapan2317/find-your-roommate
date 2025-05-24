@@ -7,16 +7,15 @@ const UpdateRoommatePost = () => {
 
     const roommatePostData = useLoaderData()
     const { title, location, roomType, lifestyle, availability, description, rentAmount, userEmail, userName, contactInfo, _id } = roommatePostData
-    // console.log(_id);
+
 
     const handleUpdateData = (e) => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form);
         const updatePost = Object.fromEntries(formData.entries())
-        console.log(updatePost);
 
-        fetch(`http://localhost:3000/allRoommates/${_id}`, {
+        fetch(`https://roommate-server-side-nu.vercel.app/allRoommates/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -25,7 +24,6 @@ const UpdateRoommatePost = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",

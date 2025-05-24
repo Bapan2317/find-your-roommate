@@ -84,9 +84,9 @@ const Footer = () => {
                             <p className='mb-6'>Quick Links</p>
                             <nav className="space-x-6 text-xs font-medium flex flex-col space-y-4 *:flex *:items-center *:gap-1">
                                 <NavLink to="/" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />Home</NavLink>
-                                <NavLink to="/find-roommate" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />Find Roommate</NavLink>
-                                <NavLink to="/browse-listing" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />Browse Listing</NavLink>
-                                <NavLink to="/my-listing" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />My Listing</NavLink>
+                                <NavLink to="/findRoommate" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />Find Roommate</NavLink>
+                                <NavLink to="/browseListing" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />Browse Listing</NavLink>
+                                <NavLink to="/myListing" className="hover:text-secondary"><MdKeyboardDoubleArrowRight className='text-primary ' />My Listing</NavLink>
                             </nav>
                         </div>
                         <div className="md:hidden">

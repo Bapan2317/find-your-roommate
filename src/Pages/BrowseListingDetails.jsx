@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const BrowseListingDetails = ({ singleRoommate }) => {
-    // console.log(singleRoommate);
     const { title, description, availability, location, _id } = singleRoommate
     return (
         <div className='bg-gray-700 w-full py-6 px-12 rounded-2xl  transition-transform hover:scale-105 hover:shadow-xl'>

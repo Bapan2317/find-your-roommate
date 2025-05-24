@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 const RoommatesPost = ({ roommate }) => {
 
-    // console.log(roommate);
 
     const { title, description, availability, location, _id } = roommate
 

@@ -8,7 +8,6 @@ const MainLayout = () => {
     const [theme, setTheme] = useState("light");
 
     return (
-        // <div data-theme={theme} className='max-w-7xl mx-auto'>
         <div data-theme={theme} className="min-h-screen transition-all duration-300">
 
 

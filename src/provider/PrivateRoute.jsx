@@ -7,8 +7,6 @@ import { useContext } from 'react';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
 
-    console.log(loading);
-
     if (loading) {
         return <Loader />;
     }

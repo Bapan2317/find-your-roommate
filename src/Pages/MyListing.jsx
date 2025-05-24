@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import { Typewriter } from 'react-simple-typewriter';
 
 const MyListing = () => {
     const myListing = useLoaderData();
@@ -28,7 +29,7 @@ const MyListing = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/roommates/${id}`, {
+                fetch(`https://roommate-server-side-nu.vercel.app/roommates/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -48,17 +49,23 @@ const MyListing = () => {
         });
     };
 
-    if (loading || !user) {
-        return (
-            <div className="flex items-center justify-center h-screen">
-                <span className="loading loading-bars loading-lg text-primary"></span>
-            </div>
-        );
+    if (!myListing || myListing.length === 0) {
+        return <Loader />;
     }
 
     return (
         <div className='min-h-screen bg-gray-100 text-black px-4 py-6'>
-            <h2 className='text-2xl font-bold mb-6 text-center md:text-left'>My Listings</h2>
+            <p className='text-2xl md:text-4xl text-primary text-center py-4 md:py-6 font-bold'>
+                <Typewriter
+                    words={['See your own post']}
+                    loop={true}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                />
+            </p>
 
             {currentUserPosts.length > 0 ? (
                 <div className="overflow-x-auto">

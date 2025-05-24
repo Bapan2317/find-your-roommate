@@ -20,7 +20,19 @@ const Register = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newUser = Object.fromEntries(formData.entries())
-        const { email, password, name, photo } = newUser
+        const { email, password, name, photo } = newUser;
+
+        const validPassword = new RegExp(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$"
+        );
+
+
+        if (!validPassword.test(password)) {
+            toast.error(
+                "Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
+            );
+            return;
+        }
 
 
         register(email, password)
@@ -146,6 +158,7 @@ const Register = () => {
                     </a>
                 </p>
             </div>
+            <ToastContainer />
         </div>
     );
 };

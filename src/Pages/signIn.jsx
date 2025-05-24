@@ -2,7 +2,7 @@ import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../provider/AuthProvider";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router";
 
 const Login = () => {
@@ -19,19 +19,29 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const validPassword = new RegExp(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$"
+        );
+
+        if (!validPassword.test(password)) {
+            toast.error(
+                "Password must be at least 6 characters and include uppercase, lowercase, number, and special character."
+            );
+            return;
+        }
+
 
         setLoading(true)
 
         login(email, password)
             .then(result => {
-                console.log(result);
                 const user = result.user;
                 toast("Login successful")
                 setUser(user)
                 navigate("/")
             })
             .catch(error => {
-                console.log(error.message);
+                toast(error.message)
             })
     }
 
@@ -62,8 +72,7 @@ const Login = () => {
                         <input
                             type="email"
                             name="email"
-                            // placeholder="Enter your email"
-                            defaultValue={"bapan@2311.com"}
+                            placeholder="Enter your email"
                             className="w-full p-3 rounded-lg bg-white/30 placeholder-white/70 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white"
                         />
                     </div>
@@ -75,8 +84,7 @@ const Login = () => {
                             <input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
-                                // placeholder="Enter your password"
-                                defaultValue={111111}
+                                placeholder="Enter your password"
                                 className="w-full p-3 pr-10 rounded-lg bg-white/30 placeholder-white/70 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white"
                             />
                             <button
@@ -123,6 +131,7 @@ const Login = () => {
                     </a>
                 </p>
             </div>
+            <ToastContainer />
         </div>
     );
 };

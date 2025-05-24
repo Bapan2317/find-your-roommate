@@ -6,24 +6,31 @@ import { toast } from 'react-toastify';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { RiMenu2Line } from 'react-icons/ri';
 import { MdRestaurantMenu } from 'react-icons/md';
+import { Tooltip } from 'react-tooltip';
+import "./header.css"
 
 const Header = ({ theme, setTheme }) => {
 
-    const { user, LogOut, setUser } = use(AuthContext)
+    const { user, LogOut, setUser, setLoading } = use(AuthContext)
 
     const [isOpen, setIsOpen] = useState(false);
 
     const navigate = useNavigate()
 
     const handleLogOut = () => {
+        setLoading(true);
         LogOut()
             .then(() => {
-                toast("Log out successfully")
-                setUser(null)
-                navigate("/")
+                setUser(null);
+                toast("Log out successfully");
+                setTimeout(() => {
+                    navigate("/");
+                }, 200);
             })
             .catch(error => toast(error))
-    }
+            .finally(() => setLoading(false));
+    };
+
 
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light");
@@ -31,7 +38,7 @@ const Header = ({ theme, setTheme }) => {
 
     const links = <>
         <li><NavLink to="/" className="hover:text-secondary">Home</NavLink></li>
-        <li><NavLink to="/findRoommate" className="hover:text-secondary">Find Roommate</NavLink></li>
+        <li><NavLink to="/findRoommate" className="hover:text-secondary">Post Find Roommate</NavLink></li>
         <li><NavLink to="/browseListing" className="hover:text-secondary">Browse Listing</NavLink></li>
         <li><NavLink to="/myListing" className="hover:text-secondary">My Listing</NavLink></li>
     </>
@@ -41,7 +48,7 @@ const Header = ({ theme, setTheme }) => {
     }
 
     return (
-        <div className='sticky top-0 z-50 bg-base-300 bg-opacity-95 backdrop-blur-sm shadow-md'>
+        <div className='header sticky top-0 z-50 bg-base-300 bg-opacity-95 backdrop-blur-sm shadow-md'>
             <div className='max-w-7xl mx-auto flex justify-between items-center p-4'>
                 {/* Logo */}
                 <div className="hidden lg:flex gap-2 items-center">
@@ -90,9 +97,19 @@ const Header = ({ theme, setTheme }) => {
                     {
                         user ?
                             <div className="flex items-center gap-3">
+
+                                <Tooltip
+                                    anchorSelect="#hello"
+                                    content={user.displayName}
+                                />
                                 <div className="">
                                     {
-                                        <img className='w-[20px] h-[20px] md:w-[30px] md:h-[30px] rounded-full' src={user.photoURL ? user.photoURL : <FaRegUserCircle />} title={user.displayName} />
+                                        <img
+                                            id='hello'
+                                            className='w-[20px] h-[20px] md:w-[30px] md:h-[30px] rounded-full' src={user.photoURL ? user.photoURL : <FaRegUserCircle />}
+
+                                        />
+
 
                                     }
                                 </div>
