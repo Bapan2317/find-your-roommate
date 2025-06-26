@@ -41,6 +41,7 @@ const Header = ({ theme, setTheme }) => {
         <li><NavLink to="/findRoommate" className="hover:text-secondary">Post Find Roommate</NavLink></li>
         <li><NavLink to="/browseListing" className="hover:text-secondary">Browse Listing</NavLink></li>
         <li><NavLink to="/myListing" className="hover:text-secondary">My Listing</NavLink></li>
+        <li><NavLink to="/dashboard" className="hover:text-secondary">Dashboard</NavLink></li>
     </>
 
     const handleToggleMenu = () => {
@@ -49,7 +50,7 @@ const Header = ({ theme, setTheme }) => {
 
     return (
         <div className='header sticky top-0 z-50 bg-base-300 bg-opacity-95 backdrop-blur-sm shadow-md'>
-            <div className='max-w-7xl mx-auto flex justify-between items-center p-4'>
+            <div className='max-w-10/12 mx-auto flex justify-between items-center p-4'>
                 {/* Logo */}
                 <div className="hidden lg:flex gap-2 items-center">
                     <img src={logo} alt="Logo" className='w-[40px]' />

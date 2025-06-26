@@ -17,6 +17,7 @@ import UpdateRoommatePost from "../components/UpdateRoommatePost";
 import PrivateRoute from "../provider/PrivateRoute";
 import { Suspense } from "react";
 import Loader from "../components/Loader";
+import Dashboard from "../Pages/Dashboard";
 // import PrivateRoute from "../provider/PrivateRoute";
 
 
@@ -76,6 +77,10 @@ export const router = createBrowserRouter(
                 {
                     path: "/findRoommate",
                     element: <PrivateRoute> <FindRoommate /> </PrivateRoute>
+                },
+                {
+                    path: "/dashboard",
+                    element: <PrivateRoute> <Dashboard /> </PrivateRoute>
                 },
             ]
         },

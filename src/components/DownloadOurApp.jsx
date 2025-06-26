@@ -7,8 +7,8 @@ import downloadApp from '../assets/downloadApp.png';
 
 const DownloadOurApp = () => {
     return (
-        <div className='bg-base-300 max-w-11/12 lg:max-w-9/12 mx-auto flex items-center justify-between px-12  rounded-3xl my-14 py-6'>
-            <div className="">
+        <div className='bg-base-300 max-w-11/12 lg:max-w-10/12 mx-auto flex items-center justify-between px-12  rounded-3xl my-14 py-6'>
+            <div className="lg:py-12">
                 <h1 className="text-xl md:text-2xl font-semibold mb-8 md:leading-12 text-white">
                     Download Our Mobile App <br /> <span className='text-secondary'>20% Off</span>
                 </h1>
