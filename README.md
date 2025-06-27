@@ -31,9 +31,9 @@ A full-stack web application that helps users find and post roommate listings ba
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Live link
 
-[🔗 View Live](https://your-surge-or-vercel-link.com)
+[🔗 View Live](http://find-your-roommate.surge.sh)
 
 ---
 
